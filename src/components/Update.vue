@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <b-col sm="9">
+            <h2 class="display-4">Update Information</h2>
             <b-form @submit="submitfn">
                 <div class = "card-body">
                     <b-form-group id="input-group-2" label-for="input-2">
@@ -68,9 +69,10 @@
                     </b-form-group>
 
                 </div>
-                <b-button type="submit"  variant="primary">Submit</b-button>
+                <b-button type="submit"  variant="primary">Update</b-button>
             </b-form>
         </b-col>
+        <hr><br>
     </div>
 </template>
 
@@ -100,7 +102,7 @@ export default {
     },
     methods: {
         redirect(){
-            this.$router.push('/employee'); 
+            this.$router.push('/manage-employee/employee'); 
         },
         submitfn(e) {
             e.preventDefault();

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <b-col sm="6">
-            <h2>Insert Employee</h2>
+            <h2 class="display-4">Insert Employee</h2>
             <b-form @submit="submitfn">
                 <div class = "card-body">
                     <b-form-group id="input-group-2" label-for="input-2">
@@ -69,9 +69,11 @@
                     </b-form-group>
 
                 </div>
-                <b-button type="submit" variant="primary">Submit</b-button>
+                <b-button type="submit" variant="primary">Create</b-button>
             </b-form>
         </b-col>
+        <hr>
+        <br>
     </div>
 </template>
 
@@ -93,6 +95,9 @@ export default {
     created() {
     },
     methods: {
+        redirect(){
+            this.$router.push('/manage-employee/employee'); 
+        },
         submitfn(e) {
             e.preventDefault();
             this.$http.post('http://127.0.0.1:8000/api/insert-employees', {
@@ -110,6 +115,7 @@ export default {
             .catch(function (error) {
                 console.log(error);
             });
+            this.redirect();
         }
     }
 }

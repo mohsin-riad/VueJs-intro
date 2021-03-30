@@ -10,6 +10,7 @@ import List from '@/components/List'
 import Employee from '@/components/Employee'
 import Insert from '@/components/Insert'
 import Update from '@/components/Update'
+import ManageEmployee from '@/components/ManageEmployee'
 
 Vue.use(Router)
 
@@ -52,19 +53,36 @@ export default new Router({
       component: List
     },
     {
-      path: '/employee',
-      name: 'Employee',
-      component: Employee
-    },
-    {
-      path: '/insert',
-      name: 'Insert',
-      component: Insert
-    },
-    {
-      path: "/update/:id",
-      name: 'Update',
-      component: Update
+      path: '/manage-employee',
+      name: 'ManageEmployee',
+      component: ManageEmployee,
+      children: [
+        {
+          path: 'employee',
+          name: 'Employee',
+          component: Employee,
+        },
+        {
+          path: 'insert',
+          name: 'Insert',
+          component: Insert
+        },
+        {
+          path: "update/:id",
+          name: 'Update',
+          component: Update
+        }
+      ]
     }
+    // {
+      // path: '/insert',
+      // name: 'Insert',
+      // component: Insert
+    // },
+    // {
+      // path: "/update/:id",
+      // name: 'Update',
+      // component: Update
+    // }
   ]
 })
