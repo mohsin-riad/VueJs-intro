@@ -68,7 +68,7 @@
                     </b-form-group>
 
                 </div>
-                <b-button type="submit" variant="primary">Submit</b-button>
+                <b-button type="submit"  variant="primary">Submit</b-button>
             </b-form>
         </b-col>
     </div>
@@ -78,44 +78,56 @@
 export default {
     data() {
         return {
-            name:'',
-            email:'',
-            gender:'',
-            is_active:'0',
-            date_of_birth:null,
-            role:null,
-            password:"",
+            // name:'',
+            // email:'',
+            // gender:'',
+            // is_active:'0',
+            // date_of_birth:null,
+            // role:null,
+            // password:"",
             roles: [{ text: 'Select One', value: null}, 'admin', 'manager'],
             // show: true
             employee :[]
         }
     },
     created() {
-        const baseURI = 'http://127.0.0.1:8000/api/get-employee/'+`${this.$route.params.id}`
-        this.$http.get(baseURI)
+        const baseApi = 'http://127.0.0.1:8000/api/get-employee/'+`${this.$route.params.id}`
+        this.$http.get(baseApi)
         .then((result) => {
             this.employee = result.data.employee,
             console.log(this.employee)
         })
     },
     methods: {
+        redirect(){
+            this.$router.push('/employee'); 
+        },
         submitfn(e) {
             e.preventDefault();
-            this.$http.post('http://127.0.0.1:8000/api/update-employees', {
-                    name: this.name,
-                    email: this.email,
-                    gender: this.gender,
-                    is_active: this.is_active,
-                    date_of_birth: this.date_of_birth,
-                    role: this.role,
-                    password: this.password
+            // console.log(this.employee.name)
+            // console.log(this.employee.email)
+            // console.log(this.employee.gender)
+            // console.log(this.employee.is_active)
+            // console.log(this.employee.date_of_birth)
+            // console.log(this.employee.role)
+            // console.log(this.employee.password)            
+            const pushApi = 'http://127.0.0.1:8000/api/update-employees/'+`${this.$route.params.id}`
+            this.$http.post(pushApi, {
+                    name: this.employee.name,
+                    email: this.employee.email,
+                    gender: this.employee.gender,
+                    is_active: this.employee.is_active,
+                    date_of_birth: this.employee.date_of_birth,
+                    role: this.employee.role,
+                    password: this.employee.password
                 })
                 .then(function (response) {
-                    console.log(response.data);
+                    // alert(response.data.msg);
                 })
                 .catch(function (error) {
                     console.log(error);
             });
+            this.redirect();
         }
     }
 }
