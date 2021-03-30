@@ -53,6 +53,7 @@ export default {
         }
     },
     mounted() {
+        this.reload();
         const baseURI = 'http://127.0.0.1:8000/api/employees'
         this.$http.get(baseURI)
         .then((result) => {
@@ -64,6 +65,11 @@ export default {
         console.log(this.employees.length)
         return this.employees.length
       }
+    },
+    methods: {
+        reload(){
+            this.$forceUpdate();
+        }
     }
 }
 </script>
