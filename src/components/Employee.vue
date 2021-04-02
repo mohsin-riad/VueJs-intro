@@ -27,14 +27,13 @@
                     <tr v-for="emp in employees" :key="emp.id" :value="emp.id">
                         <th>{{ emp.name }}</th>
                         <th>{{ emp.email }}</th>
-                        <th>{{ emp.password }}</th>
+                        <th> **** </th>
                         <th>{{ emp.gender }}</th>
-                        <th>{{ emp.is_active }}</th>
+                        <th>{{ emp.is_active ? 'Active' : 'Inactive' }}</th>
                         <th>{{ emp.date_of_birth }}</th>
                         <th>{{ emp.role }}</th>
                         <th><router-link :to="{ path: '/manage-employee/update/'+`${emp.id}`, component: Update , params: { id: emp.id },}" class="btn btn-warning"> Edit </router-link></th>
                     </tr>
-                    
                 </tbody>
             </table>
         </div>  
