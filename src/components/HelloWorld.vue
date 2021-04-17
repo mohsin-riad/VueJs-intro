@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-table striped hover :items="items" :fields="fields"></b-table>
+  <div class="container"> 
+    <h1 style="margin-top:20px;" class="display-2">Welocome To Dashboard</h1>   
   </div>
 </template>
 

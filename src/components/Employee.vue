@@ -10,7 +10,6 @@
                     <b-button size="sm"  class="btn btn-danger">Delete</b-button>
                 </template>
             </b-table> -->
-            
             <table class="table table-dark">
                 <thead>
                     <tr>
@@ -28,12 +27,12 @@
                     <tr v-for="emp in employees" :key="emp.id" :value="emp.id">
                         <th>{{ emp.name }}</th>
                         <th>{{ emp.email }}</th>
-                        <th>{{ emp.password }}</th>
+                        <th> **** </th>
                         <th>{{ emp.gender }}</th>
-                        <th>{{ emp.is_active }}</th>
+                        <th>{{ emp.is_active ? 'Active' : 'Inactive' }}</th>
                         <th>{{ emp.date_of_birth }}</th>
                         <th>{{ emp.role }}</th>
-                        <th><router-link :to="{ path: './update/'+`${emp.id}`, component: Update , params: { id: emp.id },}" class="btn btn-warning"> Edit </router-link></th>
+                        <th><router-link :to="{ path: '/manage-employee/update/'+`${emp.id}`, component: Update , params: { id: emp.id },}" class="btn btn-warning"> Edit </router-link></th>
                     </tr>
                 </tbody>
             </table>
@@ -47,8 +46,6 @@ export default {
     data() {
         return {
             fields: ['id', 'name', 'email', 'password', 'gender', 'is_active', 'date_of_birth', 'role','action'],
-            perPage: 5,
-            currentPage: 1,
             employees: []
         }
     },

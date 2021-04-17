@@ -1,14 +1,15 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark">
-      <b-navbar-brand to="/">Home</b-navbar-brand>
-
+      <b-navbar-brand to="/">Dashboard</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item to="/employee">Employee List</b-nav-item>
-          <b-nav-item to="/insert">Insert</b-nav-item>
+          <b-nav-item to="/manage-employee">Manage Employee</b-nav-item>
+          <b-nav-item to="">Profile</b-nav-item>
+          <b-nav-item to="">About</b-nav-item>
+          <!-- <b-nav-item to="/manage-employee/employee">Employee List</b-nav-item>
+          <b-nav-item to="/manage-employee/insert">Insert</b-nav-item> -->
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
